@@ -2,4 +2,4 @@ private static final Log log=LogFactory.getLog(TestNoLogging.class.getName());
 
 log.info();
 
-默认日志级别debug 自带log4j.properties,log4j2.xml,logback.xml;
+榛樿鏃ュ織绾у埆debug 鑷甫log4j.properties,log4j2.xml,logback.xml;
