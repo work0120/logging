@@ -15,13 +15,13 @@
  */
 package org.nebula.common.logging;
 
-import org.nebula.common.exceptions.CustomException;
+import org.nebula.common.exceptions.BaseException;
 
 
 /**
  * @author 
  */
-public class LogException extends CustomException {
+public class LogException extends BaseException {
 
   private static final long serialVersionUID = 1022924004852350942L;
 
