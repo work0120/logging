@@ -1,5 +1,9 @@
 package org.nebula.common.logging;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.message.Message;
+
 public interface Log {
 	
 	public void trace(String msg);
@@ -37,4 +41,6 @@ public interface Log {
 	public  boolean isErrorEnabled();
 
 	public  boolean isFatalEnabled();
+
+	//void log(Marker marker, String fqcn, Level level, Message data, Throwable t);
 }
