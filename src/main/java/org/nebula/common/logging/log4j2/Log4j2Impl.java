@@ -1,17 +1,16 @@
 package org.nebula.common.logging.log4j2;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
-import org.apache.logging.log4j.message.Message;
 import org.apache.logging.log4j.spi.AbstractLogger;
 import org.nebula.common.logging.Log;
 import org.nebula.common.logging.LogFactory;
-
+@SuppressWarnings("unused")
 public class Log4j2Impl implements Log {
 
+	
 	private static Marker MARKER = MarkerManager.getMarker(LogFactory.MARKER);
 
 	private static final String FQCN = Log4j2Impl.class.getName();
@@ -25,7 +24,6 @@ public class Log4j2Impl implements Log {
 	public Log4j2Impl(String clazz) {
 		logger = LogManager.getLogger(clazz);
 		 if (logger instanceof AbstractLogger) {
-		 //System.out.println(logger.isDebugEnabled()+"--------");
 		 log=new Log4j2AbstractLoggerImpl((AbstractLogger)logger);
 		 }else{
 		 log=new Log4j2LoggerImpl(logger);
@@ -34,13 +32,11 @@ public class Log4j2Impl implements Log {
 	}
 
 	public void trace(String msg) {
-		// log.trace(msg);
-       
+		 log.trace(msg);
 	}
 
 	public void trace(String msg, Throwable t) {
-		// log.trace(msg, t);
-
+		log.trace(msg, t);
 	}
 
 	public void debug(String msg) {

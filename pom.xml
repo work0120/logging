@@ -3,25 +3,25 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.nebula.logging</groupId>
 	<artifactId>logging</artifactId>
-	<version>2.0</version>
+	<version>3.0</version>
 	<packaging>jar</packaging>
 	<description>不直接使用第三方日志</description>
 
 	<properties>
 		<slf4j.version>1.7.7</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
-		<log4j2.version>2.0-rc2</log4j2.version>
+		<log4j2.version>2.0</log4j2.version>
 		<logback.version>1.1.2</logback.version>
 	</properties>
 
 	<dependencies>
 		<!-- slf4j要与其他框架混合使用 -->
-		  <dependency>
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 			<optional>true</optional>
-		</dependency> 
+		</dependency>
 
 		<!-- log4j2日志 单独使用需要log4j-api 和log4j-core -->
 		<dependency>
@@ -42,7 +42,7 @@
 			<artifactId>log4j-slf4j-impl</artifactId>
 			<version>${log4j2.version}</version>
 			<optional>true</optional>
-		</dependency> 
+		</dependency>
 
 		<!-- logback使用 若是logback+slf4j 则只需要加上slf4j-api的jar包 -->
 		<dependency>
@@ -62,31 +62,29 @@
 			<artifactId>logback-access</artifactId>
 			<version>${logback.version}</version>
 			<optional>true</optional>
-		</dependency> 
+		</dependency>
 
 		<!-- log4j 日志 -->
-		 <dependency>
+		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 			<optional>true</optional>
-		</dependency> 
+		</dependency>
 		<!-- log4j+slf4j -->
-		 <dependency>
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>log4j-over-slf4j</artifactId>
 			<version>${slf4j.version}</version>
 			<optional>true</optional>
 		</dependency>
-        <!-- jdk14 logging+slf4j -->
-        <dependency>
+		<!-- jdk14 logging+slf4j -->
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-jdk14</artifactId>
 			<version>${slf4j.version}</version>
 			<optional>true</optional>
-		</dependency> 
-				
-		
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -127,7 +125,7 @@
 				<version>2.4</version>
 				<configuration>
 					<archive>
-						<addMavenDescriptor>false</addMavenDescriptor>
+						<addMavenDescriptor>true</addMavenDescriptor>
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
@@ -135,7 +133,23 @@
 					</archive>
 				</configuration>
 			</plugin>
-
+			<!-- 源代码打包 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<configuration>
+					<attach>true</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
